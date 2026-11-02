@@ -10,7 +10,7 @@ export function Footer() {
         <div className="footer-top">
           <div className="footer-hello">
             <h2>Say hello.</h2>
-            <p>Questions, ideas or feedback on an app. I read every email.</p>
+            <p>Questions, ideas or feedback on an app. We read every email.</p>
             <a className="footer-email" href={`mailto:${site.email}`}>
               {site.email}
             </a>
@@ -47,7 +47,7 @@ export function Footer() {
         </div>
 
         <p className="footer-legal">
-          © {year} {site.legalName}. App Store is a trademark of Apple Inc. Google Play is a trademark of Google LLC.
+          © {year} {site.legalName}. All rights reserved.
         </p>
       </div>
     </footer>

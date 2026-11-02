@@ -31,7 +31,7 @@ export default async function SupportPage({ params }: Props) {
         <p className="legal-meta">Usually answered within two working days.</p>
 
         <p>
-          Found a bug, have an idea or need help with your account? Email me and include your phone model and the app
+          Found a bug, have an idea or need help with your account? Email us and include your phone model and the app
           version from Settings.
         </p>
         <a className="button" href={mail}>

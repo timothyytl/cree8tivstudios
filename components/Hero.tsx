@@ -13,6 +13,15 @@ export function Hero() {
   return (
     <section className="hero">
       <div className="hero-copy">
+        <motion.p
+          className="hero-badge"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease }}
+        >
+          <span className="hero-badge-dot" aria-hidden />
+          {site.hero.badge}
+        </motion.p>
         <motion.h1
           className="hero-title"
           initial={{ opacity: 0, y: 24 }}

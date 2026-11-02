@@ -65,7 +65,7 @@ export default async function AppPage({ params }: Props) {
         <section className="app-more">
           <div>
             <h2>Questions about {app.name}?</h2>
-            <p>Read the common questions, or email me directly.</p>
+            <p>Read the common questions, or email us directly.</p>
           </div>
           <div className="app-more-links">
             <Link href={`/${app.slug}/support`}>Support and FAQ</Link>

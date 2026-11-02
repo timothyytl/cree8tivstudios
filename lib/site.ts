@@ -25,7 +25,15 @@ export type AppEntry = {
   faq: { q: string; a: string }[];
 };
 
+// Which design the homepage apps section uses: "bento", "shelf" or "spotlight".
+export type AppsLayout = "bento" | "shelf" | "spotlight";
+
 export const site = {
+  appsLayout: "bento" as AppsLayout,
+
+  // Shown after your published apps in the apps section.
+  upcoming: [{ name: "App two", note: "Already in the sketchbook. More when it is ready." }],
+
   name: "Cree8tiv Studios",
   legalName: "Cree8tiv Studios",
   domain: "cree8tivstudios.com",
@@ -36,9 +44,10 @@ export const site = {
   description: "An independent studio in Malaysia making small, focused iOS and Android apps.",
 
   hero: {
-    title: "Small apps, made with care.",
+    badge: "iOS and Android apps",
+    title: "Beautifully simple apps for everyday life.",
     intro:
-      "Cree8tiv Studios is a one-person app studio in Malaysia. I design and build focused iOS and Android apps that do one job well.",
+      "Cree8tiv Studios crafts calm, fast apps that help you plan, focus and get more done. Fewer taps, less noise, and a little delight in every screen.",
   },
 
   // Stacking cards on the homepage. Edit these to match how you really work.
@@ -51,7 +60,7 @@ export const site = {
     {
       title: "Private by default",
       body: "Your data stays on your phone unless you choose to sync. No ads, no tracking for profit.",
-      tone: "surface",
+      tone: "vivid",
     },
     {
       title: "One fair price",
@@ -59,8 +68,8 @@ export const site = {
       tone: "accent",
     },
     {
-      title: "Made by one person",
-      body: "Every email reaches the person who builds the app. Feedback turns into updates quickly.",
+      title: "Built to last",
+      body: "Regular updates, careful support and no surprise changes. Apps you can rely on for years.",
       tone: "line",
     },
   ],

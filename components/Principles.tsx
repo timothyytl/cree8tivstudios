@@ -54,7 +54,7 @@ export function Principles() {
   return (
     <section id="how" className="principles" aria-labelledby="how-title">
       <div className="principles-head">
-        <h2 id="how-title">How I make apps</h2>
+        <h2 id="how-title">How we make apps</h2>
         <p>A few rules every Cree8tiv app follows.</p>
       </div>
       <div ref={listRef} className="principles-list">
