@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["TEAMID.com.cree8tivstudios.daywise"],
+        "components": [
+          { "/": "/daywise/open/*", "comment": "Links under /daywise/open/ open the app" }
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": ["TEAMID.com.cree8tivstudios.daywise"]
+  }
+}
