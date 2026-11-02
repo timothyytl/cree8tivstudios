@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "motion/react";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "motion/react";
 import { apps, site } from "@/lib/site";
 import { MiniPhone } from "./MiniPhone";
 
@@ -16,10 +17,15 @@ const reveal = (i: number) => ({
 // Bento grid: one large card per app, smaller cards for what's next.
 export function AppsBento() {
   const [featured, ...others] = apps;
+  const featureRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: featureRef, offset: ["start end", "center center"] });
+  const phoneY = useTransform(scrollYProgress, [0, 1], [140, 0]);
+  const phoneRotate = useTransform(scrollYProgress, [0, 1], [18, -6]);
   return (
     <div className="bento">
       {featured && (
         <motion.div
+          ref={featureRef}
           {...reveal(0)}
           className="bento-card bento-feature"
           style={{ ["--app-accent" as string]: featured.accent }}
@@ -32,7 +38,9 @@ export function AppsBento() {
               Explore {featured.name}
             </Link>
           </div>
-          <MiniPhone screen={featured.story[0]?.screen ?? "tasks"} className="bento-phone" />
+          <motion.div className="bento-phone kb-scroll" style={{ y: phoneY, rotate: phoneRotate }}>
+            <MiniPhone screen={featured.story[0]?.screen ?? "tasks"} />
+          </motion.div>
         </motion.div>
       )}
 

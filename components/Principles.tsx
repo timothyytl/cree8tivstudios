@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { site } from "@/lib/site";
+import { RevealHeading } from "./RevealHeading";
 
 // Stacking cards: each card pins near the top and the next slides over it.
 // Cards underneath shrink and dim a little so the stack reads as a deck.
@@ -54,7 +55,7 @@ export function Principles() {
   return (
     <section id="how" className="principles" aria-labelledby="how-title">
       <div className="principles-head">
-        <h2 id="how-title">How we make apps</h2>
+        <RevealHeading id="how-title" text="How we make apps" />
         <p>A few rules every Cree8tiv app follows.</p>
       </div>
       <div ref={listRef} className="principles-list">

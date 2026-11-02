@@ -2,7 +2,7 @@
 
 The studio site for Cree8tiv Studios. The studio brand is neutral (ink and white) with one accent, signal orange, on the 8 of the C8 monogram. Each app brings its own colour on its own page.
 
-- **Homepage:** headline with the monogram in slow 3D, an "Our apps" section, stacking cards for how you make apps, and a contact footer.
+- **Homepage:** headline with the monogram in 3D that turns, grows and drifts as you scroll; an "Our apps" section with a phone that rises into place; a band of giant sliding type; stacking cards for how you make apps; headings whose words rise in on scroll; and a footer revealed from beneath the page like a curtain.
 - **App pages (`/<slug>`):** app hero in the app's colour and a pinned device story where the phone turns to face you and its screen changes per feature.
 - **Privacy and support pages** for every app.
 

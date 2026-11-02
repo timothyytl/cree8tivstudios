@@ -1,4 +1,5 @@
 import { site } from "@/lib/site";
+import { RevealHeading } from "../RevealHeading";
 import { AppsBento } from "./AppsBento";
 import { AppsShelf } from "./AppsShelf";
 import { AppsSpotlight } from "./AppsSpotlight";
@@ -9,7 +10,7 @@ export function AppsSection() {
   return (
     <section id="apps" className={`apps apps--${layout}`} aria-labelledby="apps-title">
       <div className="apps-head">
-        <h2 id="apps-title">Our apps</h2>
+        <RevealHeading id="apps-title" text="Our apps" />
         <p>Thoughtfully designed for iPhone and Android. Each one does a single job, beautifully.</p>
       </div>
       {layout === "shelf" ? <AppsShelf /> : layout === "spotlight" ? <AppsSpotlight /> : <AppsBento />}
