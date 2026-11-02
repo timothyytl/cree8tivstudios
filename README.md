@@ -63,7 +63,7 @@ Motion respects the system "Reduce motion" setting: the 3D sway stops, smooth sc
 | `app-icon-dark.svg` / `-light.svg` (+ 1024 PNGs) | Social avatars, store developer profile |
 | `favicon.svg`, `favicon-*.png`, `/favicon.ico` | Browser tabs |
 
-Colours: ink `#111116`, white `#FFFFFF`, signal orange `#FF5A1F` (the 8 and calls to action; use `#C2410C` for small orange text on white) and electric violet `#6E4BFF` (the second, vibrant colour for highlights and cards). Dark mode: `#0E0F14` background, `#F2F2F5` text, `#FF7A45` orange, `#8F73FF` violet. Wordmark: Syne ExtraBold. UI text: Plus Jakarta Sans.
+Colours: ink `#111116`, white `#FFFFFF`, signal orange `#FF5A1F` (the 8 and highlights; use `#C2410C` for small orange text on white; orange cards use an orange-to-violet gradient with white text) and electric violet `#6E4BFF` (the second, vibrant colour for highlights and cards). Dark mode: `#0E0F14` background, `#F2F2F5` text, `#FF7A45` orange, `#8F73FF` violet. Wordmark: Syne ExtraBold. UI text: Plus Jakarta Sans.
 
 The wordmark is live text, so for print or a vector lockup, set "CREE8TIV" in Syne ExtraBold with the 8 in orange and "STUDIOS" in Syne SemiBold with wide letter spacing, then convert to outlines in Figma.
 
