@@ -1,44 +1,31 @@
 import Link from "next/link";
 import { apps, site } from "@/lib/site";
-
-// Deterministic star field (same on server and client, so no hydration noise).
-function makeStars(count: number) {
-  let seed = 11;
-  const rand = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
-  return Array.from({ length: count }, () => ({
-    x: rand() * 100,
-    y: rand() * 75,
-    size: rand() < 0.85 ? 2 : 3,
-    opacity: 0.3 + rand() * 0.6,
-  }));
-}
-
-const stars = makeStars(70);
+import { Mark } from "./Logo";
 
 export function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer id="contact" className="site-footer">
-      <div className="stars" aria-hidden>
-        {stars.map((s, i) => (
-          <span
-            key={i}
-            style={{ left: `${s.x}%`, top: `${s.y}%`, width: s.size, height: s.size, opacity: s.opacity }}
-          />
-        ))}
-      </div>
-
       <div className="footer-inner">
-        <h2 className="footer-title">Say hello.</h2>
-        <a className="footer-email" href={`mailto:${site.email}`}>
-          {site.email}
-        </a>
+        <div className="footer-top">
+          <div className="footer-hello">
+            <h2>Say hello.</h2>
+            <p>Questions, ideas or feedback on an app. I read every email.</p>
+            <a className="footer-email" href={`mailto:${site.email}`}>
+              {site.email}
+            </a>
+          </div>
+          <Mark size={120} c="var(--footer-ink)" eight="var(--accent)" className="footer-mark" />
+        </div>
 
         <div className="footer-cols">
           {apps.map((app) => (
             <div key={app.slug}>
               <h3>{app.name}</h3>
               <ul>
+                <li>
+                  <Link href={`/${app.slug}`}>Overview</Link>
+                </li>
                 <li>
                   <Link href={`/${app.slug}/support`}>Support</Link>
                 </li>

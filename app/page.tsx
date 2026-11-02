@@ -1,21 +1,17 @@
-import { AppGallery } from "@/components/AppGallery";
-import { DayTimeline } from "@/components/DayTimeline";
+import { AppWindow } from "@/components/AppWindow";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { Manifesto } from "@/components/Manifesto";
-import { Sky } from "@/components/Sky";
+import { Principles } from "@/components/Principles";
 
 export default function Home() {
   return (
     <>
-      <Sky />
       <Header />
       <main id="main">
         <Hero />
-        <DayTimeline />
-        <AppGallery />
-        <Manifesto />
+        <AppWindow />
+        <Principles />
       </main>
       <Footer />
     </>

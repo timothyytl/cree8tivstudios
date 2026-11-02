@@ -1,8 +1,12 @@
 # Cree8tiv Studios website
 
-A Next.js site for an independent app studio. The page scrolls through one day: the sky goes from dawn to night, the sun crosses the screen, a pinned clock runs through the day, the app gallery slides sideways, and the closing paragraph lights up word by word.
+The studio site for Cree8tiv Studios. The studio brand is neutral (ink and white) with one accent, signal orange, on the 8 of the C8 monogram. Each app brings its own colour on its own page.
 
-Built with Next.js (App Router), [Motion](https://motion.dev) for animation and [Lenis](https://lenis.darkroom.engineering) for smooth scrolling. Plain CSS, no UI framework.
+- **Homepage:** headline with the monogram in slow 3D, an "On the bench" window that expands as you scroll to reveal the apps, stacking cards for how you make apps, and a contact footer.
+- **App pages (`/<slug>`):** app hero in the app's colour and a pinned device story where the phone turns to face you and its screen changes per feature.
+- **Privacy and support pages** for every app.
+
+Built with Next.js (App Router), [Motion](https://motion.dev) for animation and [Lenis](https://lenis.darkroom.engineering) for smooth scrolling. Plain CSS, no UI framework. Light and dark mode follow the visitor's system setting.
 
 ## Run it
 
@@ -15,23 +19,41 @@ Open http://localhost:3000.
 
 ## Make it yours
 
-Almost everything is in **`lib/site.ts`**: studio name, domain, emails, hero copy, the three "day" moments, the closing paragraph and your apps. Each app automatically gets:
+Almost everything is in **`lib/site.ts`**: studio details, hero copy, the four principles and your apps. Check the principles match how you really work. Each app automatically gets:
 
+- `/<slug>` — landing page (the device story steps come from the app's `story` list)
 - `/<slug>/privacy` — privacy policy (use as the Privacy Policy URL in App Store Connect and Play Console)
 - `/<slug>/support` — support page with FAQ and account deletion steps (use as the Support URL, and `/<slug>/support#delete-account` for Google Play's account deletion URL)
 
-The privacy page is a **template, not legal advice**. Replace the bracketed items, check it against what your app and its SDKs actually collect, then delete the yellow note at the top.
+The privacy page is a **template, not legal advice**. Replace the bracketed items, check it against what your app and its SDKs actually collect, then delete the note at the top.
 
-Other places to touch:
+Add store links (`appStoreUrl`, `playStoreUrl`) when an app launches; the waitlist button disappears automatically.
 
 | File | What |
 |---|---|
-| `app/globals.css` | Colours (top of file), type sizes, layout |
-| `app/icon.svg` | Favicon |
-| `components/PhoneMock.tsx` | CSS phone mock; swap for real screenshots with `next/image` later |
+| `app/globals.css` | Brand tokens at the top (light and dark), then layout |
+| `components/Logo.tsx` | The C8 mark and lockup used across the site |
+| `components/PhoneScreens.tsx` | CSS-drawn app screens; swap for real screenshots later |
+| `public/brand/` | Logo files (see below) |
 | `public/.well-known/` | Deep-link files (see below) |
 
-Motion respects the system "Reduce motion" setting: entrance animations jump to their end state, smooth scrolling turns off, and pinned sections become a normal list.
+Motion respects the system "Reduce motion" setting: the 3D sway stops, smooth scrolling turns off, pinned sections become normal sections and the app window starts open.
+
+## Brand files
+
+`public/brand/` holds the logo:
+
+| File | Use |
+|---|---|
+| `cree8tiv-mark.svg` | Main mark on light backgrounds |
+| `cree8tiv-mark-on-dark.svg` | Mark on dark backgrounds |
+| `cree8tiv-mark-mono-black.svg`, `-mono-white.svg` | One-colour use (print, stamps, watermarks) |
+| `app-icon-dark.svg` / `-light.svg` (+ 1024 PNGs) | Social avatars, store developer profile |
+| `favicon.svg`, `favicon-*.png`, `/favicon.ico` | Browser tabs |
+
+Colours: ink `#111116`, white `#FFFFFF`, signal orange `#FF5A1F` (use `#C2410C` for small orange text on white). Dark mode: `#0E0F14` background, `#F2F2F5` text, `#FF7A45` orange. Wordmark: Syne ExtraBold. UI text: Plus Jakarta Sans.
+
+The wordmark is live text, so for print or a vector lockup, set "CREE8TIV" in Syne ExtraBold with the 8 in orange and "STUDIOS" in Syne SemiBold with wide letter spacing, then convert to outlines in Figma.
 
 ## Put it on GitHub
 

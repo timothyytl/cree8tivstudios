@@ -1,20 +1,22 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
+import { Lockup } from "./Logo";
 
 export function Header() {
   return (
     <header className="site-header">
-      <Link href="/" className="wordmark" aria-label={`${site.name} home`}>
-        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden>
-          <path d="M5 16a7 7 0 0 1 14 0z" fill="#F5B01E" />
-          <rect x="2" y="17" width="20" height="2" rx="1" fill="currentColor" />
-        </svg>
-        <span>{site.name}</span>
-      </Link>
-      <nav aria-label="Main">
-        <a href="/#apps">Apps</a>
-        <a href="/#contact">Contact</a>
-      </nav>
+      <div className="site-header-inner">
+        <Link href="/" className="home-link" aria-label={`${site.name} home`}>
+          <Lockup />
+        </Link>
+        <nav aria-label="Main">
+          <Link href="/#apps">Apps</Link>
+          <Link href="/#how">How I work</Link>
+          <Link href="/#contact" className="nav-cta">
+            Contact
+          </Link>
+        </nav>
+      </div>
     </header>
   );
 }

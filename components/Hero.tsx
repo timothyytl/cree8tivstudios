@@ -1,54 +1,67 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion } from "motion/react";
 import { site } from "@/lib/site";
+import { Mark } from "./Logo";
 
 const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
+const LAYERS = 10;
 
-// The page's one orchestrated load moment: the headline rises line by line
-// out of a mask, then the intro fades in. On scroll the block drifts up and away.
+// Opening section: headline on the left, the monogram in slow 3D on the right.
+// The 3D is stacked flat copies of the mark pushed back in space; CSS does the sway.
 export function Hero() {
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], [0, -140]);
-  const opacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
-  const { lines, intro } = site.hero;
-
   return (
-    <section ref={ref} className="hero">
-      <motion.div className="hero-inner" style={{ y, opacity }}>
-        <h1 className="hero-title" aria-label={lines.join(" ")}>
-          {lines.map((line, i) => (
-            <span className="line-mask" key={line} aria-hidden>
-              <motion.span
-                className="line"
-                initial={{ y: "108%" }}
-                animate={{ y: "0%" }}
-                transition={{ duration: 1.1, delay: 0.15 + i * 0.13, ease }}
-              >
-                {line}
-              </motion.span>
-            </span>
-          ))}
-        </h1>
+    <section className="hero">
+      <div className="hero-copy">
+        <motion.h1
+          className="hero-title"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease }}
+        >
+          {site.hero.title}
+        </motion.h1>
         <motion.p
           className="hero-intro"
-          initial={{ opacity: 0, y: 14 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.75, ease }}
+          transition={{ duration: 0.9, delay: 0.15, ease }}
         >
-          {intro}
+          {site.hero.intro}
         </motion.p>
-      </motion.div>
-      <motion.p
-        className="scroll-hint"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.4, duration: 0.8 }}
+        <motion.div
+          className="hero-actions"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.3, ease }}
+        >
+          <a className="button" href="#apps">
+            See the apps
+          </a>
+          <a className="button button--ghost" href="#contact">
+            Get in touch
+          </a>
+        </motion.div>
+      </div>
+
+      <motion.div
+        className="hero-mark"
+        aria-hidden
+        initial={{ opacity: 0, scale: 0.92 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.1, delay: 0.1, ease }}
       >
-        Scroll to move the sun
-      </motion.p>
+        <div className="live-mark">
+          {Array.from({ length: LAYERS }, (_, i) => (
+            <div key={i} className="live-layer live-layer--side" style={{ transform: `translateZ(${-(LAYERS - i) * 1.6}px)` }}>
+              <Mark size="100%" c="var(--mark-side)" eight="var(--mark-side-8)" />
+            </div>
+          ))}
+          <div className="live-layer">
+            <Mark size="100%" c="var(--ink)" eight="var(--accent)" />
+          </div>
+        </div>
+      </motion.div>
     </section>
   );
 }

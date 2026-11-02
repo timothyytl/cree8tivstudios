@@ -1,19 +1,21 @@
 // Everything you'll want to change lives in this file.
-// Swap the placeholder studio name, domain, emails and apps for your own.
+
+export type ScreenKind = "tasks" | "focus" | "habits";
 
 export type AppEntry = {
-  slug: string; // used in URLs: /<slug>/privacy, /<slug>/support
+  slug: string; // used in URLs: /<slug>, /<slug>/privacy, /<slug>/support
   name: string;
-  workingTitle?: boolean;
+  tagline: string;
   summary: string;
   status: string;
   platforms: string[];
   bundleId: string; // reverse-DNS, permanent once published
   appStoreUrl?: string;
   playStoreUrl?: string;
-  accent: string; // card + phone mock colour
-  accentInk: string; // text colour that reads on the accent
-  screen: "planner" | "generic"; // which phone mock to draw
+  waitlist?: boolean; // shows a "Join the waitlist" email button until store links exist
+  accent: string; // the app's own colour (the studio stays neutral)
+  accentSoft: string; // pale tint of the accent for backgrounds
+  story: { title: string; body: string; screen: ScreenKind }[];
   privacy: {
     lastUpdated: string;
     collected: { what: string; why: string }[];
@@ -31,49 +33,68 @@ export const site = {
   email: "hello@cree8tivstudios.com",
   supportEmail: "support@cree8tivstudios.com",
   location: "Malaysia",
-  description:
-    "An independent studio making focused iOS and Android apps for planning, focus and habits.",
+  description: "An independent studio in Malaysia making small, focused iOS and Android apps.",
 
   hero: {
-    lines: ["Software for", "the hours", "you have."],
+    title: "Small apps, made with care.",
     intro:
-      "Cree8tiv Studios is a one-person app studio in Malaysia. I make small, careful apps for planning the day, doing the work and keeping good habits.",
+      "Cree8tiv Studios is a one-person app studio in Malaysia. I design and build focused iOS and Android apps that do one job well.",
   },
 
-  // The pinned "day" section. Times are a real sequence, so they're shown.
-  day: [
+  // Stacking cards on the homepage. Edit these to match how you really work.
+  principles: [
     {
-      time: "07:00",
-      title: "Plan the morning",
-      body: "Start with a short list, not a wall of tasks. Decide what matters before the day decides for you.",
+      title: "Offline first",
+      body: "Apps open instantly and work without a connection. Sync is there when you want it.",
+      tone: "ink",
     },
     {
-      time: "13:00",
-      title: "Protect the afternoon",
-      body: "Block time for deep work and keep the rest out. Notes and tasks stay one tap away when you need them.",
+      title: "Private by default",
+      body: "Your data stays on your phone unless you choose to sync. No ads, no tracking for profit.",
+      tone: "surface",
     },
     {
-      time: "21:00",
-      title: "Look back at night",
-      body: "Tick off habits, move what's left to tomorrow, and close the day knowing where you stand.",
+      title: "One fair price",
+      body: "Pay for the app, not with your attention. Simple pricing you can understand at a glance.",
+      tone: "accent",
+    },
+    {
+      title: "Made by one person",
+      body: "Every email reaches the person who builds the app. Feedback turns into updates quickly.",
+      tone: "line",
     },
   ],
-
-  manifesto:
-    "One developer, a short list of apps and no growth hacks. Each app does one job well, opens fast, works offline and charges a fair price instead of taking your attention.",
 };
 
 export const apps: AppEntry[] = [
   {
     slug: "daywise",
     name: "Daywise",
+    tagline: "Plan the day. Protect your focus. Keep your habits.",
     summary: "Tasks, notes, time blocks and habits in one calm daily view.",
     status: "In development",
     platforms: ["iOS", "Android"],
     bundleId: "com.cree8tivstudios.daywise",
+    waitlist: true,
     accent: "#2F4BD8",
-    accentInk: "#FFFFFF",
-    screen: "planner",
+    accentSoft: "#E9EDFF",
+    story: [
+      {
+        title: "Plan the day in a minute",
+        body: "A short list for today, with everything else out of sight until you need it.",
+        screen: "tasks",
+      },
+      {
+        title: "Block time for real work",
+        body: "Focus sessions sit right inside your schedule, so deep work actually happens.",
+        screen: "focus",
+      },
+      {
+        title: "Close the day",
+        body: "Tick off habits, move what's left to tomorrow and watch the week fill up.",
+        screen: "habits",
+      },
+    ],
     privacy: {
       lastUpdated: "2 November 2026",
       collected: [
