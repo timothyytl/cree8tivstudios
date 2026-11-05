@@ -14,8 +14,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: `${app.name} support` };
 }
 
-// Use this page as the Support URL in App Store Connect, and the
-// "Delete account" section's URL for Google Play's account deletion field.
+// Use this page as the Support URL in App Store Connect. Google Play's account
+// deletion field takes /<slug>/delete-account.
 export default async function SupportPage({ params }: Props) {
   const app = getApp((await params).app);
   const mail = `mailto:${site.supportEmail}?subject=${encodeURIComponent(`${app.name} support`)}`;
@@ -32,7 +32,7 @@ export default async function SupportPage({ params }: Props) {
 
         <p>
           Found a bug, have an idea or need help with your account? Email us and include your phone model and the app
-          version from Settings.
+          version from Settings. You can also send feedback from the app: Settings, then Send feedback.
         </p>
         <a className="button" href={mail}>
           Email support
@@ -49,19 +49,10 @@ export default async function SupportPage({ params }: Props) {
         </div>
 
         <h2 id="delete-account">Delete your account</h2>
-        <p>You can delete your {app.name} account and all of its data at any time.</p>
-        <ul>
-          <li>
-            <strong>In the app:</strong> open Settings, tap Account, then Delete account.
-          </li>
-          <li>
-            <strong>By email:</strong> write to <a href={`mailto:${site.supportEmail}`}>{site.supportEmail}</a> from
-            the address on your account with the subject &ldquo;Delete my account&rdquo;.
-          </li>
-        </ul>
         <p>
-          Your synced data is removed from our servers within 30 days. Data stored only on your device is removed when
-          you delete the app. Read the <Link href={`/${app.slug}/privacy`}>privacy policy</Link> for details.
+          You can delete your {app.name} account and all of its data at any time, in the app or by email.{" "}
+          <Link href={`/${app.slug}/delete-account`}>See how to delete your account</Link>. Read the{" "}
+          <Link href={`/${app.slug}/privacy`}>privacy policy</Link> for details.
         </p>
       </main>
     </div>

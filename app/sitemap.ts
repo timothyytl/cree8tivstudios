@@ -6,6 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${site.url}/${app.slug}` },
     { url: `${site.url}/${app.slug}/support` },
     { url: `${site.url}/${app.slug}/privacy` },
+    { url: `${site.url}/${app.slug}/delete-account` },
   ]);
   return [{ url: site.url }, ...appPages];
 }

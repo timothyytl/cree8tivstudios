@@ -35,9 +35,10 @@ Each app automatically gets:
 
 - `/<slug>` — landing page (the device story steps come from the app's `story` list)
 - `/<slug>/privacy` — privacy policy (use as the Privacy Policy URL in App Store Connect and Play Console)
-- `/<slug>/support` — support page with FAQ and account deletion steps (use as the Support URL, and `/<slug>/support#delete-account` for Google Play's account deletion URL)
+- `/<slug>/support` — support page with FAQ (use as the Support URL)
+- `/<slug>/delete-account` — account deletion steps (use as Google Play's account deletion URL)
 
-The privacy page is a **template, not legal advice**. Replace the bracketed items, check it against what your app and its SDKs actually collect, then delete the note at the top.
+The privacy page is built from each app's `privacy` entry in `lib/site.ts` and is **not legal advice**. Keep it in step with what the app and its SDKs actually collect.
 
 Add store links (`appStoreUrl`, `playStoreUrl`) when an app launches; the waitlist button disappears automatically.
 
