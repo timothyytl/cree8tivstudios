@@ -34,12 +34,14 @@ export type AppEntry = {
   faq: { q: string; a: string }[];
 };
 
-// Which design the homepage apps section uses: "bento", "shelf" or "spotlight".
-export type AppsLayout = "bento" | "shelf" | "spotlight";
+export type Testimonial = {
+  quote: string;
+  name: string;
+  role: string; // e.g. "Daywise beta tester" or "App Store review"
+  avatar?: string; // optional path under /public, e.g. "/people/aisyah.jpg"
+};
 
 export const site = {
-  appsLayout: "bento" as AppsLayout,
-
   // Shown after your published apps in the apps section.
   upcoming: [{ name: "App two", note: "Already in the sketchbook. More when it is ready." }],
 
@@ -54,11 +56,31 @@ export const site = {
   description: "An independent studio in Malaysia making small, focused iOS and Android apps.",
 
   hero: {
-    badge: "iOS and Android apps",
-    title: "Beautifully simple apps for everyday life.",
+    // The word after "cree8tiv/" cycles through these.
+    words: ["studios", "apps", "ios", "android", "calm", "focus", "delight"],
     intro:
       "Cree8tiv Studios crafts calm, fast apps that help you plan, focus and get more done. Fewer taps, less noise, and a little delight in every screen.",
   },
+
+  // The big statement that lights up line by line as you scroll. "slash" lines get a bold leading /.
+  statement: [
+    { text: "we make small apps", weight: "bold" },
+    { text: "for everyday life", weight: "bold" },
+    { text: "calm, fast and private,", weight: "slash" },
+    { text: "with fewer taps", weight: "light" },
+    { text: "and a little delight.", weight: "light" },
+  ] as { text: string; weight: "bold" | "slash" | "light" }[],
+
+  about: {
+    paragraphs: [
+      "Cree8tiv Studios is an independent app studio in Malaysia. Every app is designed, built and supported in-house, from the first sketch to the store listing.",
+      "We keep the list short on purpose: a few apps, each doing one job well, looked after for years rather than abandoned after launch.",
+    ],
+  },
+
+  // "/what people say." on the homepage. Real quotes only (with permission): the section
+  // stays hidden while this list is empty.
+  testimonials: [] as Testimonial[],
 
   // Stacking cards on the homepage. Edit these to match how you really work.
   principles: [

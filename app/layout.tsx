@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans, Syne } from "next/font/google";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { site } from "@/lib/site";
 import "./globals.css";
+import "./studio.css";
 
 // Syne is used only for the wordmark. Everything else is Plus Jakarta Sans.
 const wordmark = Syne({

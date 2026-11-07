@@ -31,16 +31,13 @@ export function Mark({
   );
 }
 
-// Horizontal lockup: mark + wordmark. The wordmark is live text in Syne.
+// Horizontal lockup: mark + the lowercase one-word wordmark, live text in the sans.
 export function Lockup({ size = 30 }: { size?: number }) {
   return (
     <span className="lockup">
       <Mark size={size} />
       <span className="lockup-text">
-        <span className="lockup-name">
-          CREE<span className="lockup-8">8</span>TIV
-        </span>
-        <span className="lockup-sub">STUDIOS</span>
+        cree<span className="lockup-8">8</span>tiv<span className="lockup-sub">studios</span>
       </span>
     </span>
   );
